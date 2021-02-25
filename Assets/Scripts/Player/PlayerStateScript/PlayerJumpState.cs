@@ -15,20 +15,20 @@ public class PlayerJumpState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetBool("IsGround") == true && animator.GetBool("IsJump") == false)
+        if (animator.GetBool("IsGround") == true && animator.GetBool("IsJump") == false)                                                                                                //Se tocca terra e non ha ancora saltato
         {
-            animator.GetComponent<Rigidbody>().AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+            animator.GetComponent<Rigidbody>().AddForce(Vector2.up * jumpForce, ForceMode.Impulse);                                                                                     //Salta tramite un impulso
             animator.SetBool("IsGround", false);
             animator.SetBool("IsJump", true);
         }
 
-        if (animator.GetComponent<Rigidbody>().velocity.y < -0.1f)
+        if (animator.GetComponent<Rigidbody>().velocity.y < -0.1f)                                                                                                                      //Se la velocità y è minore di -0.1 passa allo stato di caduta
         {
             animator.SetBool("IsFall", true);
         }
 
-        if (animator.gameObject.transform.position.x <= 6 && animator.gameObject.transform.position.x >= -6)
-            animator.gameObject.transform.Translate(Vector3.right * animator.GetComponent<PlayerController>().Speed * Time.deltaTime * animator.GetComponent<PlayerController>().h);
+        if (animator.gameObject.transform.position.x <= 6 && animator.gameObject.transform.position.x >= -6)                                                                            //Blocca i movimenti entro i confini
+            animator.gameObject.transform.Translate(Vector3.right * animator.GetComponent<PlayerController>().Speed * Time.deltaTime * animator.GetComponent<PlayerController>().h);    //Consente di far muovere il player nel salto
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

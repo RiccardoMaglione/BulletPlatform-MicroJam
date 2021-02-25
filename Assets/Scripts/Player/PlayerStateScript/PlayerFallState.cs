@@ -13,8 +13,8 @@ public class PlayerFallState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.gameObject.transform.position.x <= 6 && animator.gameObject.transform.position.x >= -6)
-            animator.gameObject.transform.Translate(Vector3.right * animator.GetComponent<PlayerController>().Speed * Time.deltaTime * animator.GetComponent<PlayerController>().h);
+        if (animator.gameObject.transform.position.x <= 6 && animator.gameObject.transform.position.x >= -6)                                                                            // Blocca i movimenti entro i confini
+            animator.gameObject.transform.Translate(Vector3.right * animator.GetComponent<PlayerController>().Speed * Time.deltaTime * animator.GetComponent<PlayerController>().h);     //Consente di far muovere il player nel salto
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

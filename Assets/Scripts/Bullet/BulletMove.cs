@@ -8,14 +8,14 @@ public class BulletMove : MonoBehaviour
 
     void Update()
     {
-        transform.position += -transform.right * Time.deltaTime * speed;
+        transform.position += -transform.right * Time.deltaTime * speed;            //Muove il proiettile platform
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag == "Wall")                                      //Se collide con il muro
         {
-            this.enabled = false;
+            this.enabled = false;                                                   //Disattiva lo script
         }
     }
 }

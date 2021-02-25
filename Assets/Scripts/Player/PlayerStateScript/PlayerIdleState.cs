@@ -13,10 +13,10 @@ public class PlayerIdleState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.GetComponent<PlayerController>().h > 0 || animator.GetComponent<PlayerController>().h < 0)
+        if (animator.GetComponent<PlayerController>().h > 0 || animator.GetComponent<PlayerController>().h < 0)     //Controlla se può passare allo stato di movimento o no
             animator.SetBool("IsMove", true);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))                                                                        //Controlla se può passare allo stato di salto o no
             animator.SetBool("IsJump", false);
     }
 
