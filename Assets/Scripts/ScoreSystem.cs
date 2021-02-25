@@ -11,7 +11,7 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
-        if(ScoreInt > Player.transform.position.y)
+        if(ScoreInt < Player.transform.position.y)
         {
             ScoreInt = (int)Player.transform.position.y;
 

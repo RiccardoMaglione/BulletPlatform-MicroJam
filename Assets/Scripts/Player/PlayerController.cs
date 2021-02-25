@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public GameObject GraphicsPlayer;
     [HideInInspector] public float h;
 
+    public GameObject Bullet;
+    public bool CanSpawn = true;
+    public float Delay = 1.5f;
+
     private void FixedUpdate()
     {
         h = Input.GetAxis("Horizontal");
@@ -28,6 +32,22 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-6, transform.position.y, transform.position.z);
         }
+
+        if (Input.GetKeyDown(KeyCode.P) && CanSpawn == true)
+        {
+            BulletInstantiate();
+        }
+    }
+    public void BulletInstantiate()
+    {
+        GameObject TempBullet = Instantiate(Bullet, GetComponent<PlayerController>().GraphicsPlayer.transform.position, GetComponent<PlayerController>().GraphicsPlayer.transform.rotation);
+        CanSpawn = false;
+        StartCoroutine(CooldownSpawnBullet());
+    }
+    public IEnumerator CooldownSpawnBullet()
+    {
+        yield return new WaitForSeconds(Delay);
+        CanSpawn = true;
     }
 
     private void OnCollisionEnter(Collision collision)
