@@ -18,7 +18,7 @@ public class BulletInstantiate : MonoBehaviour
 
     public void BInst()
     {
-        GameObject TempBullet = Instantiate(Bullet, transform.position, transform.rotation);
+        GameObject TempBullet = Instantiate(Bullet, GetComponent<PlayerController>().GraphicsPlayer.transform.position, GetComponent<PlayerController>().GraphicsPlayer.transform.rotation);
         CanSpawn = false;
         StartCoroutine(CooldownSpawnBullet());
     }

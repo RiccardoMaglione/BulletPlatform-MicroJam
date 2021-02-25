@@ -8,7 +8,7 @@ public class BulletMove : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.right * Time.deltaTime * speed;
+        transform.position += -transform.right * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter(Collision collision)
